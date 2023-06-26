@@ -30,7 +30,7 @@ function Comics({ queries, onChooseComic }: Props) {
               aspectRatio={3 / 4}
               src={
                 query.thumbnail
-                  ? query.thumbnail.path + "/detail.jpg"
+                  ? query.thumbnail.path + "/portrait_incredible.jpg"
                   : imageNotFound
               }
               opacity={1}
