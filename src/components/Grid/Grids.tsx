@@ -1,5 +1,5 @@
 import { Alert, AlertIcon } from "@chakra-ui/react";
-import useQueries, { Query } from "../../hooks/useQueries";
+import useQueries from "../../hooks/useQueries";
 import SearchInput from "../SearchInput/SearchInput";
 import News from "./News";
 import Comics from "./Comics";
