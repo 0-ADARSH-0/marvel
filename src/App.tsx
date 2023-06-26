@@ -1,39 +1,33 @@
-import { Grid, GridItem, Show } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
 import Navbar from "./components/Navbar/Navbar";
 import SlideShow from "./components/SlideShow/SlideShow";
+import { useState } from "react";
+import Grids from "./components/Grid/Grids";
+
+const navItems = [
+  { value: "stories", label: "News" },
+  { value: "comics", label: "Comics" },
+  { value: "characters", label: "Characters" },
+  { value: "movies", label: "Movies" },
+  { value: "games", label: "Games" },
+  { value: "series", label: "TV Shows" },
+  { value: "events", label: "Videos" },
+  { value: "", label: "More" },
+];
 
 const App = () => {
+  const [field, setField] = useState({ value: "stories", label: "News" });
+
   return (
-    <Grid
-      templateAreas={{
-        base: `"nav" "slideshow" "main"`,
-        lg: `"nav nav" "slideshow slideshow" "aside main"`,
-      }}
-    >
-      <GridItem area={"nav"}>
-        <Navbar
-          navItems={[
-            "News",
-            "Comics",
-            "Characters",
-            "Movies",
-            "TV Shows",
-            "Games",
-            "Videos",
-            "More",
-          ]}
-        />
+    <Grid templateAreas={`"nav" "slideshow" "main"`} bgColor={"white"}>
+      <GridItem position={"fixed"} width={"100%"} zIndex={99} area={"nav"}>
+        <Navbar Items={navItems} onSelect={(field) => setField(field)} />
       </GridItem>
-      <GridItem area={"slideshow"}>
-        <SlideShow />
+      <GridItem area={"slideshow"} marginTop={"66px"} paddingY={15}>
+        <SlideShow field={field.label} />
       </GridItem>
-      <Show above="lg">
-        <GridItem area={"aside"} bgColor={"blue"}>
-          Aside
-        </GridItem>
-      </Show>
-      <GridItem area={"main"} bgColor={"green"}>
-        Main
+      <GridItem area={"main"}>
+        <Grids onSelect={(field) => setField(field)} field={field} />
       </GridItem>
     </Grid>
   );

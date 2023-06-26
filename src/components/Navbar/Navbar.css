@@ -7,15 +7,20 @@ ul.nav {
     padding: 0 18px;
 }
 
-.nav-item .nav-link {
-    color: white;
+a.nav-link {
+    color: rgba(255, 255, 255, 0.6);
     font-family: 'Roboto Condensed', sans-serif;
-    font-size: 14px;
-    text-align: center;
     border-color: red;
-    word-wrap: normal;
+} 
+
+a.nav-link:visited {
+    color: rgba(255, 255, 255, 0.6);
 }
 
-.nav-item .nav-link:hover {
-    color: white;
+a.nav-link:hover {
+    color: red;
+}
+
+a.nav-link:active {
+    color: red;
 }

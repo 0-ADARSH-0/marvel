@@ -1,0 +1,21 @@
+.image {
+    margin-top: 8px;
+    border-radius: 0;
+    background-color: white;
+}
+
+.image:hover {
+    background-color: white;
+    margin-top: 0;
+    margin-bottom: 8px;
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.8) , 0 6px 18px 0 rgba(0, 0, 0, 0.1);
+    transition-duration: 500ms;
+}
+
+.text {
+    word-wrap: normal;
+}
+
+.text:hover {
+    color: rgb(220, 0, 0);
+}

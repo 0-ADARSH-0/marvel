@@ -1,10 +1,15 @@
 import { Show } from "@chakra-ui/react";
 import "./Navbar.css";
-interface Props {
-  navItems: string[];
+
+interface NavItems {
+  Items: {
+    value: string;
+    label: string;
+  }[];
+  onSelect: (field: { value: string; label: string }) => void;
 }
 
-const Navbar = ({ navItems }: Props) => {
+const Navbar = ({ Items, onSelect }: NavItems) => {
   return (
     <div className="bg-dark">
       <nav className="container">
@@ -15,10 +20,10 @@ const Navbar = ({ navItems }: Props) => {
       <Show above="md">
         <nav className="navbar p-0">
           <ul className="nav nav-underline">
-            {navItems.map((item) => (
-              <li className="nav-item" key={item}>
-                <a href="" className="nav-link">
-                  {item}
+            {Items.map((item) => (
+              <li className="nav-item" key={item.value}>
+                <a href="#" className="nav-link" onClick={() => onSelect(item)}>
+                  {item.label}
                 </a>
               </li>
             ))}
