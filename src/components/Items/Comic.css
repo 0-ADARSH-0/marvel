@@ -1,0 +1,7 @@
+Tr Td:first-child {
+    text-align: right;
+}
+
+tr.css-0>td {
+    border-bottom-width: 0;
+}

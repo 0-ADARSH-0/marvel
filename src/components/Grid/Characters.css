@@ -1,0 +1,10 @@
+CardBody  {
+    height: 100%;
+    transition: 600ms;
+}
+
+a.chakra-link p.chakra-text {
+    position: absolute;
+    float: left;
+    z-index: 99;
+}

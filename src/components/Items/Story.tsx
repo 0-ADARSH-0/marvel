@@ -3,13 +3,13 @@ import { Query } from "../../hooks/useQueries";
 import imageNotFound from "../../assets/image-not-found.jpg";
 
 interface Props {
-  queries: Query[];
+  queries: Query[] | undefined;
 }
 
 function Story({ queries }: Props) {
   return (
     <Box borderWidth={2} className="shadow-lg p-5">
-      {queries.map((query) => (
+      {queries?.map((query) => (
         <div key={query.id} className="container">
           <Tag className="mb-3 fw-bold text-danger">
             {query.type.toUpperCase()}

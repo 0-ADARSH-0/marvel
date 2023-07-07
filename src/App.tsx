@@ -3,31 +3,65 @@ import Navbar from "./components/Navbar/Navbar";
 import SlideShow from "./components/SlideShow/SlideShow";
 import { useState } from "react";
 import Grids from "./components/Grid/Grids";
-
-const navItems = [
-  { value: "stories", label: "News" },
-  { value: "comics", label: "Comics" },
-  { value: "characters", label: "Characters" },
-  { value: "movies", label: "Movies" },
-  { value: "games", label: "Games" },
-  { value: "series", label: "TV Shows" },
-  { value: "events", label: "Videos" },
-  { value: "", label: "More" },
-];
+import useQueries from "./hooks/useQueries";
+import Pagination from "./components/Navbar/Pagination";
 
 const App = () => {
-  const [field, setField] = useState({ value: "stories", label: "News" });
+  const [endpoint, setEndpoint] = useState("stories");
+  const [page, setPage] = useState(1);
+  const [searchText, setSearchText] = useState("");
+
+  const { queriesContainer, isLoading, error } = useQueries(
+    endpoint,
+    {
+      params: {
+        orderBy: "-modified",
+        limit: 20,
+        offset: (page - 1) * 20,
+        titleStartsWith: endpoint == "comics" ? searchText || null : null,
+        nameStartsWith: endpoint == "characters" ? searchText || null : null,
+      },
+    },
+    [endpoint, page, searchText]
+  );
 
   return (
-    <Grid templateAreas={`"nav" "slideshow" "main"`} bgColor={"white"}>
+    <Grid templateAreas={`"nav" "slideshow" "main" "pagination"`}>
       <GridItem position={"fixed"} width={"100%"} zIndex={99} area={"nav"}>
-        <Navbar Items={navItems} onSelect={(field) => setField(field)} />
+        <Navbar
+          onSelect={(endPoint) => {
+            setEndpoint(endPoint);
+            setPage(1);
+          }}
+        />
       </GridItem>
       <GridItem area={"slideshow"} marginTop={"66px"} paddingY={15}>
-        <SlideShow field={field.label} />
+        <SlideShow field={endpoint[0].toUpperCase() + endpoint.slice(1)} />
       </GridItem>
       <GridItem area={"main"}>
-        <Grids onSelect={(field) => setField(field)} field={field} />
+        <Grids
+          endPoint={endpoint}
+          queries={queriesContainer?.results}
+          isLoading={isLoading}
+          error={error}
+          onPass={(path) => {
+            setEndpoint(path);
+            setPage(1);
+          }}
+          onSearch={(s) => {
+            setSearchText(s);
+            setPage(1);
+          }}
+        />
+      </GridItem>
+      <GridItem area={"pagination"}>
+        <Pagination
+          total={
+            queriesContainer ? Math.floor(queriesContainer.total / 20) + 1 : 0
+          }
+          current={page}
+          onSelect={(current) => setPage(current)}
+        />
       </GridItem>
     </Grid>
   );

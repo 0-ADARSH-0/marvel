@@ -1,26 +1,10 @@
-ul.nav {
-    margin: auto;
-    height: min-content;
-    width: max-content;
-}
-.nav-item {
-    padding: 0 18px;
+.nav-underline a.nav-link {
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    font-family: 'Roboto Condensed';
 }
 
-a.nav-link {
-    color: rgba(255, 255, 255, 0.6);
-    font-family: 'Roboto Condensed', sans-serif;
-    border-color: red;
-} 
-
-a.nav-link:visited {
-    color: rgba(255, 255, 255, 0.6);
-}
-
-a.nav-link:hover {
-    color: red;
-}
-
-a.nav-link:active {
-    color: red;
+.nav-underline a.nav-link:hover {
+    color: rgba(255, 255, 255, 0.9);
+    border-bottom-color: red;
 }

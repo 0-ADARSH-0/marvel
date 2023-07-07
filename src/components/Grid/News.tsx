@@ -2,6 +2,7 @@ import {
   Box,
   Divider,
   Heading,
+  Link,
   List,
   ListItem,
   Stat,
@@ -14,15 +15,15 @@ import { Query } from "../../hooks/useQueries";
 import "./News.css";
 
 interface Props {
-  queries: Query[];
-  onChoose: (queryId: number) => void;
+  queries: Query[] | undefined;
+  onSelect: (queryId: number) => void;
 }
 
-function News({ queries, onChoose }: Props) {
+function News({ queries, onSelect }: Props) {
   return (
     <div className="container">
       <List spacing={5}>
-        {queries.map((query) => (
+        {queries?.map((query) => (
           <Box fontFamily={"Roboto Condensed"} key={query.id}>
             <Tag className="mb-3 text-danger fw-bold">
               {query.type?.toUpperCase()}
@@ -30,13 +31,10 @@ function News({ queries, onChoose }: Props) {
             <Heading fontFamily={"Roboto Condensed"} as={"h2"}>
               <ListItem fontWeight={"bold"}>
                 <Stat>
-                  <StatLabel
-                    className="news"
-                    fontSize={30}
-                    cursor={"pointer"}
-                    onClick={() => onChoose(query.id)}
-                  >
-                    {query.title}
+                  <StatLabel className="news" fontSize={30} cursor={"pointer"}>
+                    <a href="" onClick={() => onSelect(query.id)}>
+                      {query.title}
+                    </a>
                   </StatLabel>
                   <StatHelpText
                     paddingTop={2}

@@ -4,7 +4,7 @@
     background-color: white;
 }
 
-.image:hover {
+.comic-card:hover img{
     background-color: white;
     margin-top: 0;
     margin-bottom: 8px;
@@ -12,10 +12,14 @@
     transition-duration: 500ms;
 }
 
-.text {
+.comic-title {
     word-wrap: normal;
 }
 
-.text:hover {
+.comic-card:hover .comic-title {
     color: rgb(220, 0, 0);
+}
+
+.comic-creator:hover {
+    color: red;
 }

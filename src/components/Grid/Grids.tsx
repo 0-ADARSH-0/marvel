@@ -1,60 +1,99 @@
-import { Alert, AlertIcon } from "@chakra-ui/react";
-import useQueries from "../../hooks/useQueries";
+import { Text, Icon } from "@chakra-ui/react";
 import SearchInput from "../SearchInput/SearchInput";
-import News from "./News";
-import Comics from "./Comics";
-import Characters from "./Characters";
-import Story from "../Items/Story";
+import { BsWifiOff, BsX } from "react-icons/bs";
 import NewsSkel from "./Skeletons/Grids/NewsSkel";
+import { Query } from "../../hooks/useQueries";
+import Comics from "./Comics";
+import News from "./News";
+import Characters from "./Characters";
+import ComicsSkel from "./Skeletons/Grids/ComicsSkel";
+import CharactersSkel from "./Skeletons/Grids/CharactersSkel";
 import Comic from "../Items/Comic";
+import Story from "../Items/Story";
 
 interface Props {
-  field: { value: string; label: string };
-  onSelect: (field: { value: string; label: string }) => void;
+  endPoint: string;
+  queries: Query[] | undefined;
+  isLoading: boolean;
+  error: string;
+  onPass: (path: string) => void;
+  onSearch: (searchText: string) => void;
 }
 
-function Grids({ field, onSelect }: Props) {
-  const { queries, isLoading, error } = useQueries(field.value, {
-    params: { orderBy: "-modified" },
-  });
+function Grids({
+  endPoint,
+  queries,
+  isLoading,
+  error,
+  onPass,
+  onSearch,
+}: Props) {
+  const components = [
+    {
+      endpoint: "stories/",
+      component: <Story queries={queries} />,
+      skeleton: <i />,
+    },
+    {
+      endpoint: "comics/",
+      component: <Comic queries={queries} onSelect={(path) => onPass(path)} />,
+      skeleton: <i />,
+    },
+    {
+      endpoint: "characters/",
+      component: (
+        <Characters queries={queries} onSelect={(id) => console.log(id)} />
+      ),
+      skeleton: <i />,
+    },
+    {
+      endpoint: "stories",
+      component: (
+        <News
+          queries={queries}
+          onSelect={(id) => onPass(endPoint + "/" + id)}
+        />
+      ),
+      skeleton: <NewsSkel />,
+    },
+    {
+      endpoint: "comics",
+      component: <Comics queries={queries} onSelect={(path) => onPass(path)} />,
+      skeleton: <ComicsSkel />,
+    },
+    {
+      endpoint: "characters",
+      component: (
+        <Characters queries={queries} onSelect={(path) => onPass(path)} />
+      ),
+      skeleton: <CharactersSkel />,
+    },
+  ];
+
+  const currentComponent = components.find(
+    (e) => !endPoint.includes(e.endpoint + "/") && endPoint.includes(e.endpoint)
+  );
+  error = queries ? "" : error;
 
   return (
     <div className="container">
-      <SearchInput />
+      <SearchInput onSearch={(s) => onSearch(s)} />
       {error && (
-        <Alert status="error">
-          <AlertIcon />
-          {error.toUpperCase()}
-        </Alert>
-      )}
-      {field.label == "News" &&
-        (isLoading ? (
-          <NewsSkel />
-        ) : (
-          <News
-            queries={queries}
-            onChoose={(id) =>
-              onSelect({
-                value: field.value + "/" + id.toString(),
-                label: "Story",
-              })
+        <div className="text-center bg-white">
+          <Icon
+            children={
+              (error == "Network Error" && <BsWifiOff />) ||
+              (error == "canceled" && <BsX />)
             }
+            color={"red"}
+            fontSize={25}
           />
-        ))}
-      {field.label == "Comics" && (
-        <Comics
-          onChooseComic={(id) =>
-            onSelect({
-              value: field.value + "/" + id.toString(),
-              label: "Comic",
-            })
-          }
-          queries={queries}
-        />
+          <Text fontSize={20} fontWeight={600} fontFamily={"Roboto Condensed"}>
+            {error}
+          </Text>
+        </div>
       )}
-      {field.label == "Characters" && <Characters queries={queries} />}
-      {field.label == "Story" && <Story queries={queries} />}
-      {field.label == "Comic" && <Comic queries={queries} />}
+      {isLoading ? currentComponent?.skeleton : currentComponent?.component}
     </div>
   );
 }

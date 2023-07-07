@@ -11,11 +11,11 @@ import imageNotFound from "../../assets/image-not-found.jpg";
 import "./Comics.css";
 
 interface Props {
-  queries: Query[];
-  onChooseComic: (id: number) => void;
+  queries: Query[] | undefined;
+  onSelect: (path: string) => void;
 }
 
-function Comics({ queries, onChooseComic }: Props) {
+function Comics({ queries, onSelect }: Props) {
   return (
     <div className="container">
       <SimpleGrid
@@ -23,8 +23,13 @@ function Comics({ queries, onChooseComic }: Props) {
         columns={{ sm: 2, md: 3, lg: 4, xl: 5 }}
         className="container"
       >
-        {queries.map((query) => (
-          <Card key={query.id} backgroundColor={"white"} shadow={"none"}>
+        {queries?.map((query) => (
+          <Card
+            className="comic-card"
+            key={query.id}
+            backgroundColor={"white"}
+            shadow={"none"}
+          >
             <Image
               className="image"
               aspectRatio={3 / 4}
@@ -35,15 +40,15 @@ function Comics({ queries, onChooseComic }: Props) {
               }
               opacity={1}
               cursor={"pointer"}
-              onClick={() => onChooseComic(query.id)}
+              onClick={() => onSelect(query.resourceURI.slice(36))}
             />
             <CardBody
-              className="text"
+              className="comic-title"
               paddingX={0}
               paddingBottom={1}
               fontFamily={"Roboto Condensed"}
               cursor={"pointer"}
-              onClick={() => onChooseComic(query.id)}
+              onClick={() => onSelect(query.resourceURI.slice(36))}
             >
               {query.title}
             </CardBody>
@@ -54,12 +59,16 @@ function Comics({ queries, onChooseComic }: Props) {
               fontFamily={"Helvetica"}
               cursor={"pointer"}
             >
-              {query.creators.items?.slice(0, 2).map((creator) => (
-                <p key={creator.name} className="text overflow-hidden me-2">
+              {query.creators?.items.slice(0, 2).map((creator) => (
+                <p
+                  key={creator.name}
+                  className="comic-creator overflow-hidden me-2"
+                  onClick={() => onSelect(creator.resourceURI.slice(36))}
+                >
                   {creator.name}
                 </p>
               ))}
-              {query.creators.items.length > 3 && <p>etc</p>}
+              {query.creators?.items.length > 3 && <p>etc</p>}
             </CardFooter>
           </Card>
         ))}
