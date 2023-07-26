@@ -1,6 +1,7 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
+import { QueryWrapper } from "../entities/interfaces";
 
-export default axios.create({
+const axiosInstance = axios.create({
   baseURL: "https://gateway.marvel.com/v1/public",
   params: {
     ts: "1",
@@ -8,3 +9,19 @@ export default axios.create({
     hash: "7f37a659cd55456615aa7cc521cb23ac",
   },
 });
+
+class APIClient {
+  endpoint: string;
+
+  constructor(endpoint: string) {
+    this.endpoint = endpoint;
+  }
+
+  getAll = (config?: AxiosRequestConfig) => {
+    return axiosInstance
+      .get<QueryWrapper>(this.endpoint, config)
+      .then((res) => res.data.data);
+  };
+}
+
+export default APIClient;

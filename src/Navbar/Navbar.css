@@ -1,0 +1,15 @@
+.nav-underline a.nav-link {
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    font-family: 'Roboto Condensed';
+}
+
+.nav-underline a.nav-link:hover {
+    color: rgba(255, 255, 255, 0.9);
+    border-bottom-color: red;
+}
+
+.nav-underline .nav-link.active {
+    color: rgba(255, 255, 255, 0.9);
+    border-bottom-color: red;
+}

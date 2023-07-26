@@ -1,3 +1,24 @@
 body {
     user-select: none;
 }
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 6px;
+    background-color: rgb(200, 200, 200);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(200,10,10);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(255, 0, 0);
+}
+
+
+img.thumbnail:hover {
+    scale: 1.1;
+    cursor: pointer;
+    transition-duration: 500ms;
+}

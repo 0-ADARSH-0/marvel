@@ -1,0 +1,10 @@
+.chakra-card:hover .chakra-image {
+    transform: scale(1.05);
+    transition: 300ms;
+}
+
+.chakra-card:hover .bar {
+    height: 100%;
+    transition: 300ms;
+}
+

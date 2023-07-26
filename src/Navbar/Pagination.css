@@ -1,0 +1,14 @@
+li {
+    list-style: none;
+}
+
+nav ul.pagination {
+    margin: auto;
+    overflow-x: auto;
+}
+
+.page-link {
+    width: 60px;
+    height: 30px;
+    text-align: center;
+}

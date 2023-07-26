@@ -1,0 +1,13 @@
+Tr Td:first-child {
+    text-align: right;
+}
+
+tr.css-0>td {
+    border-bottom-width: 0;
+}
+
+tbody.characters>tr:hover td {
+    color: red;
+    scale: 1.1;
+    transition: 200ms;
+}
