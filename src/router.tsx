@@ -10,23 +10,16 @@ import Creator from "./creators/Creator";
 
 const router = createBrowserRouter([
   {
-    path: "",
-    errorElement: <Error404 />,
+    path: "marvel",
     element: <App />,
+    errorElement: <Error404 />,
     children: [
-      {
-        path: "marvel",
-        element: <App />,
-        errorElement: <Error404 />,
-        children: [
-          { path: "stories", element: <News /> },
-          { path: "comics", element: <Comics /> },
-          { path: "comics/:id", element: <Comic /> },
-          { path: "characters", element: <Characters /> },
-          { path: "characters/:id", element: <Character /> },
-          { path: "creators/:id", element: <Creator /> },
-        ],
-      },
+      { path: "stories", element: <News /> },
+      { path: "comics", element: <Comics /> },
+      { path: "comics/:id", element: <Comic /> },
+      { path: "characters", element: <Characters /> },
+      { path: "characters/:id", element: <Character /> },
+      { path: "creators/:id", element: <Creator /> },
     ],
   },
 ]);
