@@ -10,7 +10,7 @@ import Creator from "./creators/Creator";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "",
     errorElement: <Error404 />,
     element: <App />,
     children: [
