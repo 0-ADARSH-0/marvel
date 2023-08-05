@@ -1,11 +1,13 @@
 .image {
     margin-top: 8px;
     border-radius: 0;
-    background-color: white;
+}
+
+a {
+    width: max-content;
 }
 
 .comic-card:hover img{
-    background-color: white;
     margin-top: 0;
     margin-bottom: 8px;
     box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.8) , 0 6px 18px 0 rgba(0, 0, 0, 0.1);
@@ -13,7 +15,7 @@
 }
 
 .comic-title {
-    word-wrap: normal;
+    overflow-wrap: normal;
 }
 
 .comic-card:hover .comic-title {

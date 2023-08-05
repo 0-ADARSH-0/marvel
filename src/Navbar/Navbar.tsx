@@ -1,7 +1,9 @@
-import { HStack, Hide, Icon, Image, Show } from "@chakra-ui/react";
+import { Box, HStack, Hide, Icon, Image, Show } from "@chakra-ui/react";
 import { BsList } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
 import marvel from "../assets/Marvel_Logo.svg";
+import useQueryParams from "../store";
+import ColorModeSwitch from "./ColorModeSwitch";
 import "./Navbar.css";
 
 const Items: string[] = [
@@ -15,8 +17,9 @@ const Items: string[] = [
 ];
 
 const Navbar = () => {
+  const { setqueryParams } = useQueryParams();
   return (
-    <div className="bg-dark">
+    <Box className="bg-dark shadow">
       <Show above="md">
         <nav
           className="border-bottom justify-content-center w-100"
@@ -27,7 +30,8 @@ const Navbar = () => {
               src={marvel}
               width={100}
               alt="Marvel"
-              className="mx-auto opacity-75"
+              marginX={"auto"}
+              opacity={1}
             />
           </Link>
         </nav>
@@ -48,15 +52,24 @@ const Navbar = () => {
           <Show above="md">
             {Items.map((item) => (
               <div className=" nav-item px-3 m-0" key={item}>
-                <NavLink to={item} className="nav-link">
+                <NavLink
+                  to={item}
+                  className="nav-link"
+                  onClick={() => {
+                    setqueryParams({ orderBy: "title" || "name" });
+                  }}
+                >
                   {item.toUpperCase()}
                 </NavLink>
               </div>
             ))}
           </Show>
+          <span className=" float-end">
+            <ColorModeSwitch />
+          </span>
         </HStack>
       </nav>
-    </div>
+    </Box>
   );
 };
 

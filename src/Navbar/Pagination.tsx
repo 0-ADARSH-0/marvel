@@ -2,6 +2,7 @@ import { useState } from "react";
 import useData from "../hooks/useData";
 import useQueryParams from "../store";
 import "./Pagination.css";
+import { Link, ListItem, UnorderedList } from "@chakra-ui/react";
 
 function Pagination() {
   const { setOffset } = useQueryParams();
@@ -10,18 +11,18 @@ function Pagination() {
   const total = data ? Math.floor(data.total / 20) + 1 : 1;
   return (
     <nav className="p-0">
-      <ul className="pagination pagination-sm justify-content-center py-lg-5">
-        <li
+      <UnorderedList className="pagination pagination-sm justify-content-center py-lg-5">
+        <ListItem
           className="page-item"
           onClick={() => {
             setOffset(currentPage > 1 ? currentPage - 1 : 1);
             setCurrentPage(currentPage > 1 ? currentPage - 1 : 1);
           }}
         >
-          <a className="page-link link-danger">
+          <Link className="page-link link-danger">
             <strong>⟨</strong>
-          </a>
-        </li>
+          </Link>
+        </ListItem>
 
         {[...Array(currentPage).keys()]
           .slice(
@@ -32,8 +33,8 @@ function Pagination() {
               : 1
           )
           .map((item) => (
-            <li key={item} className="page-item">
-              <a
+            <ListItem key={item} className="page-item">
+              <Link
                 className="page-link link-danger"
                 onClick={() => {
                   setCurrentPage(item);
@@ -41,15 +42,15 @@ function Pagination() {
                 }}
               >
                 {item}
-              </a>
-            </li>
+              </Link>
+            </ListItem>
           ))}
 
-        <li className="page-item">
-          <a className="page-link active bg-danger border-danger">
+        <ListItem className="page-item">
+          <Link className="page-link active bg-danger border-danger">
             {currentPage}
-          </a>
-        </li>
+          </Link>
+        </ListItem>
 
         {[
           ...Array(
@@ -62,8 +63,8 @@ function Pagination() {
         ]
           .slice(currentPage + 1)
           .map((item) => (
-            <li key={item} className="page-item">
-              <a
+            <ListItem key={item} className="page-item">
+              <Link
                 className="page-link link-danger"
                 onClick={() => {
                   setCurrentPage(item);
@@ -71,22 +72,22 @@ function Pagination() {
                 }}
               >
                 {item}
-              </a>
-            </li>
+              </Link>
+            </ListItem>
           ))}
 
-        <li
+        <ListItem
           className="page-item"
           onClick={() => {
             setOffset(currentPage < total ? currentPage + 1 : total);
             setCurrentPage(currentPage < total ? currentPage + 1 : total);
           }}
         >
-          <a className="page-link link-danger">
+          <Link className="page-link link-danger">
             <strong>⟩</strong>
-          </a>
-        </li>
-      </ul>
+          </Link>
+        </ListItem>
+      </UnorderedList>
     </nav>
   );
 }

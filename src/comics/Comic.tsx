@@ -30,6 +30,7 @@ function Comic() {
     "/comics",
     {
       titleStartsWith: comic?.title.split(":" || "(" || "#" || ".")[0],
+      orderBy: "title",
     }
   );
 

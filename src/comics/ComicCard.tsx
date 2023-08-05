@@ -13,14 +13,13 @@ const ComicCard = ({ query }: Props) => {
     <Card
       className="comic-card"
       key={query.id}
-      backgroundColor={"white"}
       shadow={"none"}
+      width={"min-content"}
     >
       <Link to={"/marvel" + query.resourceURI.slice(35)}>
         <Image
           className="image"
           aspectRatio={3 / 4}
-          marginX={0}
           src={
             query.thumbnail
               ? query.thumbnail.path + "/portrait_incredible.jpg"
@@ -36,13 +35,13 @@ const ComicCard = ({ query }: Props) => {
         paddingBottom={1}
         fontFamily={"Roboto Condensed"}
         cursor={"pointer"}
+        width={"fit-content"}
       >
         <Link to={"/marvel" + query.resourceURI.slice(35)}>
           <Text fontWeight={"bold"}>{query.title}</Text>
         </Link>
       </CardBody>
       <CardFooter
-        color={"gray.600"}
         padding={0}
         fontSize={12}
         fontFamily={"Helvetica"}

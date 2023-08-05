@@ -6,6 +6,7 @@ import News from "./stories/News";
 import Comic from "./comics/Comic";
 import Character from "./characters/Character";
 import Error404 from "./Error404";
+import Creator from "./creators/Creator";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
           { path: "comics/:id", element: <Comic /> },
           { path: "characters", element: <Characters /> },
           { path: "characters/:id", element: <Character /> },
-          { path: "creators", element: <></> },
+          { path: "creators/:id", element: <Creator /> },
         ],
       },
     ],

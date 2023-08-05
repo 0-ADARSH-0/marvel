@@ -15,6 +15,7 @@ export interface Query {
   variantDescription: string;
   thumbnail: Image;
   name: string;
+  fullName: string;
   type: string;
   modified: Date;
   format: string;

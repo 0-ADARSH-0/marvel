@@ -15,11 +15,16 @@ function NewsSkel() {
     <div className="container">
       <List spacing={5}>
         {list.map((item) => (
-          <Box fontFamily={"Roboto Condensed"} key={item}>
-            <Tag className="mb-3 text-danger fw-bold"></Tag>
+          <Box key={item}>
+            <Tag className="mb-3"></Tag>
             <Heading as={"h2"}>
               <ListItem>
-                <SkeletonText noOfLines={2} skeletonHeight={5} />
+                <SkeletonText
+                  startColor="#202020"
+                  endColor="#dadada"
+                  noOfLines={2}
+                  skeletonHeight={5}
+                />
                 <Divider />
               </ListItem>
             </Heading>

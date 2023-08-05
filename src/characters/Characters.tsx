@@ -1,4 +1,4 @@
-import { SimpleGrid } from "@chakra-ui/react";
+import { Box, HStack, SimpleGrid } from "@chakra-ui/react";
 
 import { BsRCircle } from "react-icons/bs";
 import { Link } from "react-router-dom";
@@ -8,6 +8,7 @@ import CharactersSkel from "./CharactersSkel";
 import SearchInput from "../SearchInput/SearchInput";
 import Pagination from "../Navbar/Pagination";
 import useQueryParams from "../store";
+import SortSelector from "../SearchInput/SortSelector";
 
 function Characters() {
   const { data, error, isLoading } = useData("/characters");
@@ -16,8 +17,11 @@ function Characters() {
     <>
       {error && <p className="alert alert-danger">{error.message}</p>}
       <SearchInput setSearchText={setNameStartWith} />
+      <HStack className="container p-4" spacing={10}>
+        <SortSelector orders={["name", "modified"]} />
+      </HStack>
       {isLoading && <CharactersSkel />}
-      <div className="container">
+      <Box className="container">
         {error && (
           <p className="alert alert-danger alert">
             {error.message}
@@ -35,7 +39,7 @@ function Characters() {
             </Link>
           ))}
         </SimpleGrid>
-      </div>
+      </Box>
       <Pagination />
     </>
   );

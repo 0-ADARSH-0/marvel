@@ -10,7 +10,7 @@ const Error404 = () => {
       <Image
         src={isRouteErrorResponse(error) ? error404Img : errorImg}
         width={300}
-        float={"left"}
+        margin={"auto"}
       />
     </>
   );
