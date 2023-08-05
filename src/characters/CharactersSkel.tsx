@@ -1,7 +1,7 @@
-import React from "react";
+import { Spinner } from "@chakra-ui/react";
 
 function CharactersSkel() {
-  return <div>CharactersSkel</div>;
+  return <Spinner />;
 }
 
 export default CharactersSkel;
