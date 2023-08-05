@@ -2,7 +2,6 @@ import { Box, HStack, Hide, Icon, Image, Show } from "@chakra-ui/react";
 import { BsList } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
 import marvel from "../assets/Marvel_Logo.svg";
-import useQueryParams from "../store";
 import ColorModeSwitch from "./ColorModeSwitch";
 import "./Navbar.css";
 
@@ -17,7 +16,6 @@ const Items: string[] = [
 ];
 
 const Navbar = () => {
-  const { setqueryParams } = useQueryParams();
   return (
     <Box className="bg-dark shadow">
       <Show above="md">
@@ -52,13 +50,7 @@ const Navbar = () => {
           <Show above="md">
             {Items.map((item) => (
               <div className=" nav-item px-3 m-0" key={item}>
-                <NavLink
-                  to={item}
-                  className="nav-link"
-                  onClick={() => {
-                    setqueryParams({ orderBy: "title" || "name" });
-                  }}
-                >
+                <NavLink to={item} className="nav-link">
                   {item.toUpperCase()}
                 </NavLink>
               </div>
