@@ -7,6 +7,7 @@ import Comic from "./comics/Comic";
 import Character from "./characters/Character";
 import Error404 from "./Error404";
 import Creator from "./creators/Creator";
+import Grids from "./Grids";
 
 const router = createBrowserRouter([
   {
@@ -14,12 +15,19 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <Error404 />,
     children: [
-      { path: "stories", element: <News /> },
-      { path: "comics", element: <Comics /> },
-      { path: "comics/:id", element: <Comic /> },
-      { path: "characters", element: <Characters /> },
-      { path: "characters/:id", element: <Character /> },
-      { path: "creators/:id", element: <Creator /> },
+      {
+        path: "marvel",
+        element: <Grids />,
+        errorElement: <Error404 />,
+        children: [
+          { path: "stories", element: <News /> },
+          { path: "comics", element: <Comics /> },
+          { path: "comics/:id", element: <Comic /> },
+          { path: "characters", element: <Characters /> },
+          { path: "characters/:id", element: <Character /> },
+          { path: "creators/:id", element: <Creator /> },
+        ],
+      },
     ],
   },
 ]);

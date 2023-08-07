@@ -1,10 +1,11 @@
 import { Grid, GridItem } from "@chakra-ui/react";
-import Grids from "./Grids";
+import { Outlet } from "react-router-dom";
+import Footer from "./Navbar/Footer";
 import Navbar from "./Navbar/Navbar";
 
 const App = () => {
   return (
-    <Grid templateAreas={`"nav" "slideshow" "main" "pagination"`}>
+    <Grid templateAreas={`"nav" "slideshow" "main" "pagination" "footer"`}>
       <GridItem position={"fixed"} width={"100%"} zIndex={99} area={"nav"}>
         <Navbar />
       </GridItem>
@@ -12,7 +13,10 @@ const App = () => {
         {/* <SlideShow field={endpoint[0].toUpperCase() + endpoint.slice(1)} /> */}
       </GridItem>
       <GridItem area={"main"}>
-        <Grids />
+        <Outlet />
+      </GridItem>
+      <GridItem area={"footer"} width={"100%"}>
+        <Footer />
       </GridItem>
     </Grid>
   );
