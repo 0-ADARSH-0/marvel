@@ -7,8 +7,9 @@ nav ul.pagination {
     overflow-x: auto;
 }
 
-.page-link {
-    width: 60px;
+a.page-link {
+    width: 55px;
     height: 30px;
     text-align: center;
+    background-color: transparent;
 }
