@@ -9,6 +9,7 @@ const ColorModeSwitch = () => {
     <Icon
       aria-label="switch-mode"
       color="white"
+      fontSize={20}
       children={dark ? <MdLightMode /> : <MdDarkMode />}
       onClick={() => {
         toggleColorMode();
