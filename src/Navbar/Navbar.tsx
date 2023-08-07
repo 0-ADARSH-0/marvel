@@ -47,7 +47,7 @@ const Navbar = () => (
       <HStack className="nav nav-underline m-auto justify-content-evenly w-80">
         <Hide above="md">
           <Menu>
-            <MenuButton color={"white"} children={<BsList />} />
+            <MenuButton color={"white"} fontSize={30} children={<BsList />} />
             <MenuList>
               {Items.map((item) => (
                 <MenuItem key={item}>
@@ -68,7 +68,7 @@ const Navbar = () => (
             </div>
           ))}
         </Show>
-        <span className=" float-end">
+        <span className="end-0">
           <ColorModeSwitch />
         </span>
       </HStack>
