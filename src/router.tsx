@@ -1,13 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
-import Comics from "./comics/Comics";
-import Characters from "./characters/Characters";
-import News from "./stories/News";
-import Comic from "./comics/Comic";
-import Character from "./characters/Character";
 import Error404 from "./Error404";
+import MarvelHomePage from "./MarvelHomePage";
+import Character from "./characters/Character";
+import Characters from "./characters/Characters";
+import Comic from "./comics/Comic";
+import Comics from "./comics/Comics";
 import Creator from "./creators/Creator";
-import Grids from "./Grids";
+import News from "./stories/News";
 
 const router = createBrowserRouter([
   {
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "marvel",
-        element: <Grids />,
+        element: <MarvelHomePage />,
         errorElement: <Error404 />,
         children: [
           { path: "stories", element: <News /> },
