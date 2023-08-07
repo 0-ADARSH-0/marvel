@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Link, createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import Error404 from "./Error404";
 import MarvelHomePage from "./MarvelHomePage";
@@ -15,6 +15,7 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <Error404 />,
     children: [
+      { path: "", element: <Link to={"marvel"}>Marvel</Link> },
       {
         path: "marvel",
         element: <MarvelHomePage />,
