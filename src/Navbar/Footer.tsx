@@ -6,9 +6,11 @@ const Footer = () => {
   return (
     <Box className="bg-dark shadow bottom-0" height={200} textAlign={"center"}>
       <Image width={200} src={marvel} margin={"auto"} paddingY={8}></Image>
-      <Text marginX={"auto"}>Data provided by Marvel. © 2023 MARVEL</Text>
+      <Text marginX={"auto"} color={"whiteAlpha.800"}>
+        Data provided by Marvel. © 2023 MARVEL
+      </Text>
       <UnorderedList
-        width={"40%"}
+        width={{ sm: "80%", md: "60%", lg: "40%" }}
         color={"whiteAlpha.700"}
         className=" d-flex  align-self-center m-auto justify-content-evenly"
       >
