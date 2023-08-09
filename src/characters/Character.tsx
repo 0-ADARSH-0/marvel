@@ -23,7 +23,7 @@ const Character = () => {
             className="my-lg-5 mx-auto thumbnail"
             src={
               character?.thumbnail
-                ? character?.thumbnail.path + "/detail.jpg"
+                ? character?.thumbnail.path + "/portrait_uncanny.jpg"
                 : imageNotFound
             }
             opacity={1}

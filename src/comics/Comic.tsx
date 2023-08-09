@@ -49,11 +49,11 @@ function Comic() {
             className="my-lg-5 mx-auto thumbnail"
             src={
               comic?.thumbnail
-                ? comic?.thumbnail.path + "/detail.jpg"
+                ? comic?.thumbnail.path + "/portrait_uncanny.jpg"
                 : imageNotFound
             }
             opacity={1}
-            height={{ sm: "60px", md: "150px", lg: "550px" }}
+            height={{ sm: "60px", md: "150px", lg: "450px" }}
           ></Image>
         </Link>
         <TableContainer marginBottom={100}>
