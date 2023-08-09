@@ -7,12 +7,16 @@ import SortSelector from "../SearchInput/SortSelector";
 import useData from "../hooks/useData";
 import ComicCard from "./ComicCard";
 import ComicsSkel from "./ComicsSkel";
+import SearchInput from "../SearchInput/SearchInput";
+import useQueryParams from "../store";
 
 function Comics() {
   const { data: queries, error, isLoading } = useData("/comics");
+  const setSearch = useQueryParams((s) => s.setTitleStartWith);
   return (
     <>
       {error && <Text className="alert alert-danger">{error.message}</Text>}
+      <SearchInput setSearchText={setSearch} />
       <Show above="md">
         <HStack className="container p-4" spacing={5}>
           <SortSelector orders={["title", "modified", "onsaleDate"]} />
