@@ -8,6 +8,7 @@ import Comic from "./comics/Comic";
 import Comics from "./comics/Comics";
 import Creator from "./creators/Creator";
 import News from "./stories/News";
+import MarvelPageContainer from "./MarvelPageContainer";
 
 const router = createBrowserRouter([
   {
@@ -18,9 +19,10 @@ const router = createBrowserRouter([
       { path: "", element: <Link to={"marvel"}>Marvel</Link> },
       {
         path: "marvel",
-        element: <MarvelHomePage />,
+        element: <MarvelPageContainer />,
         errorElement: <Error404 />,
         children: [
+          { path: "", element: <MarvelHomePage /> },
           { path: "stories", element: <News /> },
           { path: "comics", element: <Comics /> },
           { path: "comics/:id", element: <Comic /> },

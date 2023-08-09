@@ -23,11 +23,17 @@ const CreatorSelector = () => {
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
         Creators
       </MenuButton>
-      <MenuList minWidth="240px" maxHeight={400} overflow={"auto"}>
+      <MenuList
+        minWidth="240px"
+        maxHeight={400}
+        overflow={"auto"}
+        id="creator-list"
+      >
         <InfiniteScroll
           dataLength={count}
           hasMore={!!hasNextPage}
           next={() => fetchNextPage()}
+          scrollableTarget={"#creator-list"}
           loader={<Spinner color="red" />}
         >
           <MenuOptionGroup type="radio">

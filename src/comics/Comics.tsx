@@ -1,4 +1,4 @@
-import { HStack, Show, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, HStack, Show, SimpleGrid, Text } from "@chakra-ui/react";
 
 import Pagination from "../Navbar/Pagination";
 import CharacterSelector from "../SearchInput/CharacterSelector";
@@ -18,14 +18,14 @@ function Comics() {
       {error && <Text className="alert alert-danger">{error.message}</Text>}
       <SearchInput setSearchText={setSearch} />
       <Show above="md">
-        <HStack className="container p-4" spacing={5}>
+        <HStack className="container" paddingStart={10} spacing={4}>
           <SortSelector orders={["title", "modified", "onsaleDate"]} />
           <CharacterSelector />
           <CreatorSelector />
         </HStack>
       </Show>
       {isLoading && <ComicsSkel />}
-      <div className="container my-5">
+      <Box className="container my-5">
         <SimpleGrid
           spacing={5}
           columns={{ sm: 2, md: 3, lg: 4, xl: 5 }}
@@ -35,7 +35,7 @@ function Comics() {
             <ComicCard key={query.id} query={query} />
           ))}
         </SimpleGrid>
-      </div>
+      </Box>
       <Pagination />
     </>
   );

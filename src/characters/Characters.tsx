@@ -18,12 +18,12 @@ function Characters() {
       {error && <p className="alert alert-danger">{error.message}</p>}
       <SearchInput setSearchText={setSearch} />
       <Show above="md">
-        <HStack className="container p-4" spacing={10}>
+        <HStack className="container" paddingStart={10} spacing={4}>
           <SortSelector orders={["name", "modified"]} />
         </HStack>
       </Show>
       {isLoading && <CharactersSkel />}
-      <Box className="container">
+      <Box className="container my-5">
         {error && (
           <p className="alert alert-danger alert">
             {error.message}

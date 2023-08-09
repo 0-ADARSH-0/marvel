@@ -1,4 +1,4 @@
-import { Box, HStack, Hide, Image, Show } from "@chakra-ui/react";
+import { Box, HStack, Image, Show } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import marvel from "../assets/Marvel_Logo.svg";
 import CollapsedNavLinks from "./CollapsedNavLinks";
@@ -19,7 +19,7 @@ const Items: string[] = [
 const Navbar = () => (
   <Box className="bg-dark shadow">
     <Show above="md">
-      <nav
+      <Box
         className="border-bottom justify-content-center w-100"
         style={{ padding: "auto" }}
       >
@@ -32,22 +32,19 @@ const Navbar = () => (
             opacity={1}
           />
         </Link>
-      </nav>
+      </Box>
     </Show>
-    <nav className="container navbar p-0">
-      <HStack
-        className="nav nav-underline m-auto justify-content-evenly w-80"
-        height={20}
-      >
-        <Hide above="md">
+    <Box className="container navbar p-0">
+      <HStack className="nav nav-underline m-auto justify-content-evenly w-80">
+        <Show below="md">
           <CollapsedNavLinks items={Items} />
-        </Hide>
+        </Show>
         <Show above="md">
           <NavLinks items={Items} />
         </Show>
         <ColorModeSwitch />
       </HStack>
-    </nav>
+    </Box>
   </Box>
 );
 
