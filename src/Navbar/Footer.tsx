@@ -12,8 +12,8 @@ const Footer = () => {
       <UnorderedList
         width={{ sm: "80%", md: "50%", lg: "30%" }}
         color={"whiteAlpha.700"}
-        className=" d-flex  align-self-center m-auto justify-content-evenly"
-        fontSize={"smaller"}
+        className=" d-flex m-auto justify-content-evenly"
+        fontSize={"12px"}
       >
         <ListItem>
           <Link to={""}>Terms of Use</Link>
