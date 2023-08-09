@@ -1,8 +1,8 @@
-import { Box, Heading, Tag, Text, Image } from "@chakra-ui/react";
-import useData from "../hooks/useData";
+import { Box, Heading, Image, Show, Tag, Text } from "@chakra-ui/react";
 import { Link, useParams } from "react-router-dom";
 import imageNotFound from "../assets/image-not-found.jpg";
-import ComicCard from "../comics/ComicCard";
+import RelatedComics from "../comics/RelatedComics";
+import useData from "../hooks/useData";
 
 const Character = () => {
   const { id } = useParams();
@@ -45,26 +45,22 @@ const Character = () => {
             <Text fontSize={20}>{character?.description}</Text>
           </Box>
         ) : null}
-        {character?.comics ? (
-          <Box>
-            <hr />
-            <Heading
-              fontSize={20}
-              color={"GrayText"}
-              fontFamily={"Roboto Condensed"}
-              marginY={50}
-            >
-              APPEARANCES
-            </Heading>
-            <Box className="d-flex overflow-auto p-2">
-              {comics?.results.map((comic) => (
-                <Box className="me-5 w-100" minWidth={200} key={comic.id}>
-                  <ComicCard query={comic} />
-                </Box>
-              ))}
+        <Show above="md">
+          {character?.comics ? (
+            <Box>
+              <hr />
+              <Heading
+                fontSize={20}
+                color={"GrayText"}
+                fontFamily={"Roboto Condensed"}
+                marginY={50}
+              >
+                APPEARANCES
+              </Heading>
+              <RelatedComics relatedComics={comics} />
             </Box>
-          </Box>
-        ) : null}
+          ) : null}
+        </Show>
       </Box>
     </>
   );

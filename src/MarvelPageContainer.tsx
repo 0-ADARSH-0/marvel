@@ -12,7 +12,7 @@ const MarvelHomePage = () => {
       <GridItem area={"main"} marginTop={"100px"}>
         <Outlet />
       </GridItem>
-      <GridItem area={"footer"} width={"100%"} marginTop={"50px"}>
+      <GridItem area={"footer"} width={"100%"} marginTop={"50px"} zIndex={99}>
         <Footer />
       </GridItem>
     </Grid>

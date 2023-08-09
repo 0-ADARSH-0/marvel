@@ -3,6 +3,7 @@ import {
   Box,
   Heading,
   Image,
+  Show,
   SimpleGrid,
   Spinner,
   Table,
@@ -17,7 +18,7 @@ import { Link, useParams } from "react-router-dom";
 import imageNotFound from "../assets/image-not-found.jpg";
 import useData from "../hooks/useData";
 import "./Comic.css";
-import ComicCard from "./ComicCard";
+import RelatedComics from "./RelatedComics";
 
 function Comic() {
   const { id } = useParams();
@@ -52,7 +53,7 @@ function Comic() {
                 : imageNotFound
             }
             opacity={1}
-            height={"550px"}
+            height={{ sm: "200px", md: "300px", lg: "550px" }}
           ></Image>
         </Link>
         <TableContainer marginBottom={100}>
@@ -91,7 +92,6 @@ function Comic() {
           <Box marginBottom={100}>
             <hr />
             <Heading
-              fontSize={20}
               color={"GrayText"}
               fontFamily={"Roboto Condensed"}
               marginY={50}
@@ -106,7 +106,6 @@ function Comic() {
           <Box marginBottom={100}>
             <hr />
             <Heading
-              fontSize={20}
               color={"GrayText"}
               fontFamily={"Roboto Condensed"}
               marginY={50}
@@ -138,7 +137,6 @@ function Comic() {
           <Box marginBottom={100}>
             <hr />
             <Heading
-              fontSize={20}
               color={"GrayText"}
               fontFamily={"Roboto Condensed"}
               marginY={50}
@@ -176,24 +174,19 @@ function Comic() {
         ) : null}
       </Box>
       {similarComics?.results.length != 0 && (
-        <Box className="container">
-          <Heading
-            fontSize={25}
-            color={"GrayText"}
-            fontFamily={"Roboto Condensed"}
-            marginY={50}
-          >
-            RECOMMENDED
-          </Heading>
-          {areSimilarComicsLoading && <Spinner />}
-          <Box className="overflow-auto d-flex p-2">
-            {similarComics?.results.map((comic) => (
-              <Box key={comic.id} className="me-5" minWidth={200}>
-                <ComicCard query={comic} />
-              </Box>
-            ))}
+        <Show above="md">
+          <Box className="container">
+            <Heading
+              color={"GrayText"}
+              fontFamily={"Roboto Condensed"}
+              marginY={50}
+            >
+              RECOMMENDED
+            </Heading>
+            {areSimilarComicsLoading && <Spinner />}
+            <RelatedComics relatedComics={similarComics} />
           </Box>
-        </Box>
+        </Show>
       )}
     </>
   );
