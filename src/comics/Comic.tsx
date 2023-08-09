@@ -53,7 +53,7 @@ function Comic() {
                 : imageNotFound
             }
             opacity={1}
-            height={{ sm: "200px", md: "300px", lg: "550px" }}
+            height={{ sm: "100px", md: "200px", lg: "550px" }}
           ></Image>
         </Link>
         <TableContainer marginBottom={100}>
