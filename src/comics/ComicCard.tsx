@@ -15,6 +15,7 @@ const ComicCard = ({ query }: Props) => {
       key={query.id}
       shadow={"none"}
       width={"min-content"}
+      marginX={"auto"}
     >
       <Link to={"/marvel" + query.resourceURI.slice(35)}>
         <Image

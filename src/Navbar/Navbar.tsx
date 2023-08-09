@@ -1,18 +1,9 @@
-import {
-  Box,
-  HStack,
-  Hide,
-  Image,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Show,
-} from "@chakra-ui/react";
-import { BsList } from "react-icons/bs";
-import { Link, NavLink } from "react-router-dom";
+import { Box, HStack, Hide, Image, Show } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import marvel from "../assets/Marvel_Logo.svg";
+import CollapsedNavLinks from "./CollapsedNavLinks";
 import ColorModeSwitch from "./ColorModeSwitch";
+import NavLinks from "./NavLinks";
 import "./Navbar.css";
 
 const Items: string[] = [
@@ -46,29 +37,12 @@ const Navbar = () => (
     <nav className="container navbar p-0">
       <HStack className="nav nav-underline m-auto justify-content-evenly w-80">
         <Hide above="md">
-          <Menu>
-            <MenuButton color={"white"} fontSize={30} children={<BsList />} />
-            <MenuList>
-              {Items.map((item) => (
-                <MenuItem key={item}>
-                  <NavLink to={"/marvel/" + item} className="nav-link">
-                    {item.toUpperCase()}
-                  </NavLink>
-                </MenuItem>
-              ))}
-            </MenuList>
-          </Menu>
+          <CollapsedNavLinks items={Items} />
         </Hide>
         <Show above="md">
-          {Items.map((item) => (
-            <div className=" nav-item px-3 m-0" key={item}>
-              <NavLink to={"/marvel/" + item} className="nav-link">
-                {item.toUpperCase()}
-              </NavLink>
-            </div>
-          ))}
+          <NavLinks items={Items} />
         </Show>
-        <span className="end-0">
+        <span className="ps-lg-5">
           <ColorModeSwitch />
         </span>
       </HStack>

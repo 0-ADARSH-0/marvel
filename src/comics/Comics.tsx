@@ -1,4 +1,4 @@
-import { HStack, SimpleGrid } from "@chakra-ui/react";
+import { HStack, SimpleGrid, Text } from "@chakra-ui/react";
 
 import Pagination from "../Navbar/Pagination";
 import CharacterSelector from "../SearchInput/CharacterSelector";
@@ -15,7 +15,7 @@ function Comics() {
   const { setTitleStartWith } = useQueryParams();
   return (
     <>
-      {error && <p className="alert alert-danger">{error.message}</p>}
+      {error && <Text className="alert alert-danger">{error.message}</Text>}
       <SearchInput setSearchText={setTitleStartWith} />
       <HStack className="container p-4" spacing={10}>
         <SortSelector orders={["title", "modified", "onsaleDate"]} />
@@ -25,9 +25,9 @@ function Comics() {
       {isLoading && <ComicsSkel />}
       <div className="container my-5">
         <SimpleGrid
-          spacing={{ xs: 0, sm: 1, md: 5 }}
+          spacing={5}
           columns={{ sm: 2, md: 3, lg: 4, xl: 5 }}
-          className="m-auto"
+          padding={"10px"}
         >
           {queries?.results.map((query) => (
             <ComicCard key={query.id} query={query} />

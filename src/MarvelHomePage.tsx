@@ -5,11 +5,11 @@ import Navbar from "./Navbar/Navbar";
 
 const MarvelHomePage = () => {
   return (
-    <Grid templateAreas={`"nav" "slideshow" "main" "pagination" "footer"`}>
+    <Grid templateAreas={`"nav" "searchbar" "main" "pagination" "footer"`}>
       <GridItem position={"fixed"} width={"100%"} zIndex={99} area={"nav"}>
         <Navbar />
       </GridItem>
-      <GridItem area={"slideshow"} marginTop={"66px"} paddingY={15}>
+      <GridItem area={"searchbar"} marginTop={"66px"} paddingY={15}>
         {/* <SlideShow field={endpoint[0].toUpperCase() + endpoint.slice(1)} /> */}
       </GridItem>
       <GridItem area={"main"}>
