@@ -9,7 +9,7 @@ import {
   Image,
   useDisclosure,
 } from "@chakra-ui/react";
-import { BsList, BsX } from "react-icons/bs";
+import { BsList } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
 import marvel from "../assets/Marvel_Logo.svg";
 
