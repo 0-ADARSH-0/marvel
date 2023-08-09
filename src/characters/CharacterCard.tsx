@@ -10,7 +10,7 @@ interface Props {
 
 const CharacterCard = ({ query }: Props) => {
   return (
-    <Card className="bg-black shadow-none overflow-hidden m-auto" height={500}>
+    <Card className="bg-black shadow-none overflow-hidden mx-auto" height={500}>
       <Box overflow="hidden" width="full">
         <Image
           aspectRatio={3 / 4}

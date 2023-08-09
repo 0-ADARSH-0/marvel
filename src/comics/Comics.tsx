@@ -2,21 +2,17 @@ import { HStack, Show, SimpleGrid, Text } from "@chakra-ui/react";
 
 import Pagination from "../Navbar/Pagination";
 import CharacterSelector from "../SearchInput/CharacterSelector";
-import SearchInput from "../SearchInput/SearchInput";
+import CreatorSelector from "../SearchInput/CreatorSelector";
 import SortSelector from "../SearchInput/SortSelector";
 import useData from "../hooks/useData";
-import useQueryParams from "../store";
 import ComicCard from "./ComicCard";
 import ComicsSkel from "./ComicsSkel";
-import CreatorSelector from "../SearchInput/CreatorSelector";
 
 function Comics() {
   const { data: queries, error, isLoading } = useData("/comics");
-  const { setTitleStartWith } = useQueryParams();
   return (
     <>
       {error && <Text className="alert alert-danger">{error.message}</Text>}
-      <SearchInput setSearchText={setTitleStartWith} />
       <Show above="md">
         <HStack className="container p-4" spacing={5}>
           <SortSelector orders={["title", "modified", "onsaleDate"]} />
