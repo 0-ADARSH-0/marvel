@@ -27,7 +27,7 @@ const Character = () => {
                 : imageNotFound
             }
             opacity={1}
-            width={{ sm: "100px", md: "150px", lg: "450px" }}
+            width={{ sm: "60px", md: "150px", lg: "450px" }}
           ></Image>
         </Link>
 

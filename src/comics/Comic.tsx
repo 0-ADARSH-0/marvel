@@ -53,7 +53,7 @@ function Comic() {
                 : imageNotFound
             }
             opacity={1}
-            height={{ sm: "100px", md: "200px", lg: "550px" }}
+            height={{ sm: "60px", md: "150px", lg: "550px" }}
           ></Image>
         </Link>
         <TableContainer marginBottom={100}>
@@ -127,6 +127,7 @@ function Comic() {
                   src={image.path + "/portrait_uncanny.jpg"}
                   margin={"auto"}
                   opacity={1}
+                  width={"100px"}
                 />
               ))}
             </SimpleGrid>
@@ -149,7 +150,7 @@ function Comic() {
                 <Tbody className="characters overflow-hidden">
                   {characters?.results.map((character, index) => (
                     <Tr key={index}>
-                      <Td fontSize={20} valign={"middle"}>
+                      <Td valign={"middle"}>
                         <Link to={"/marvel" + character.resourceURI.slice(35)}>
                           {character.name.toUpperCase()}
                         </Link>
@@ -161,7 +162,7 @@ function Comic() {
                             src={
                               character.thumbnail.path + "/standard_xlarge.jpg"
                             }
-                            size="2xl"
+                            size="xl"
                           />
                         </Link>
                       </Td>
