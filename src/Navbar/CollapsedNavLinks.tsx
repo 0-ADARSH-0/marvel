@@ -24,7 +24,7 @@ const CollapsedNavLinks = ({ items }: Props) => {
       <Icon
         onClick={onOpen}
         color={"white"}
-        fontSize={20}
+        fontSize={22}
         children={<BsList />}
       />
       <Drawer placement={"left"} onClose={onClose} isOpen={isOpen}>

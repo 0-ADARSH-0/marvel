@@ -35,16 +35,17 @@ const Navbar = () => (
       </nav>
     </Show>
     <nav className="container navbar p-0">
-      <HStack className="nav nav-underline m-auto justify-content-evenly w-80">
+      <HStack
+        className="nav nav-underline m-auto justify-content-evenly w-80"
+        height={20}
+      >
         <Hide above="md">
           <CollapsedNavLinks items={Items} />
         </Hide>
         <Show above="md">
           <NavLinks items={Items} />
         </Show>
-        <span className="ps-lg-5">
-          <ColorModeSwitch />
-        </span>
+        <ColorModeSwitch />
       </HStack>
     </nav>
   </Box>
