@@ -10,9 +10,10 @@ const Footer = () => {
         Data provided by Marvel. © 2023 MARVEL
       </Text>
       <UnorderedList
-        width={{ sm: "80%", md: "60%", lg: "40%" }}
+        width={{ sm: "80%", md: "50%", lg: "30%" }}
         color={"whiteAlpha.700"}
         className=" d-flex  align-self-center m-auto justify-content-evenly"
+        fontSize={"smaller"}
       >
         <ListItem>
           <Link to={""}>Terms of Use</Link>
